@@ -29,7 +29,6 @@ int main() {
         float tab_notes_etu[N];
     } t[NE];
     float moyenne, somme, max;
-    long numEtuMax;
 
     //Demande du nombre d etudiant
     printf("Donnez le nombre d'eleves de la classe (compris entre 1 et 50)\n");

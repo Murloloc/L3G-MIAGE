@@ -20,7 +20,7 @@
 int main() {
 
     int nbA, nbB, i, flag;
-    float classeA[NA],classeB[NB];
+    float classeA[NA], classeB[NB];
     float somme, moyenneA, moyenneB, maxA, maxB, ecart_moyenneA, ecart_moyenneB;
     float varianceA, varianceB, ecart_typeA, ecart_typeB, ech, medianeA, medianeB, milieu1, milieu2;
 
@@ -103,7 +103,7 @@ int main() {
     } else if (maxA < maxB) {
         printf("\nLa meilleure note appartient a la classe B avec une valeur de : %.2f\n", maxB);
     } else {
-        printf("\nLes meilleures notes de la classe A et de la B sont égales et valent %.2f\n", maxA);
+        printf("\nLes meilleures notes de la classe A et de la B sont egales et valent %.2f\n", maxA);
     }
 
     //calcul de l'écart type classe A
