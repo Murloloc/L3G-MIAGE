@@ -7,21 +7,24 @@
 
 #include <stdio.h>
 
-int calcule_factoriel(int x) {
+long calcule_factoriel(int x) {
 
-    int i, p;
-    p = 1;
+    int i;
+    long P;
+
+    P = 1;
     i = 1;
     while (i <= x) {
-        p = p * i;
+        P = P * i;
         i++;
     }
-    return p;
+    return P;
 }
 
 int main() {
 
-    int p, n, res;
+    int p, n;
+    long res;
 
     printf("Combien d elements ?\n");
     scanf("%d", &p);
@@ -37,7 +40,7 @@ int main() {
     }
 
     res = calcule_factoriel(n) / (calcule_factoriel(p)* calcule_factoriel(n - p));
-    printf("%d\n", res);
+    printf("%ld\n", res);
 
     return 0;
 }

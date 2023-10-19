@@ -14,17 +14,19 @@ void affiche_nfoisc(int n,char c) {
         i++;
     }
     printf("\n");
+    return;
 }
 
 int main() {
 
     int i,nb_car,nb_ligne;
-    char b;
+    char b,rc;
 
     printf("Combien de lignes voulez vous ?\n");
     scanf("%d",&nb_ligne);
     printf("Donnez le caractere que vous souhaitez dessiner\n");
-    scanf(" %c",&b);
+    scanf("%c",&rc);
+    scanf("%c",&b);
 
     i=0;
     nb_car=1;

@@ -4,13 +4,15 @@
 
 #include <stdio.h>
 
-int calcule_factoriel(int n) {
+long calcule_factoriel(int n) {
 
-    int i,p;
-    p=1;
-    i=1;
-    while (i<=n){
-        p=p*i;
+    int i;
+    long p;
+
+    p = 1;
+    i = 1;
+    while (i <= n) {
+        p = p * i;
         i++;
     }
     return p;
@@ -18,12 +20,13 @@ int calcule_factoriel(int n) {
 
 int main() {
 
-    int a,res;
+    int a;
+    long res;
 
     printf("Saisissez un entier\n");
     scanf("%d", &a);
-    res= calcule_factoriel(a);
-    printf("%d",res);
+    res = calcule_factoriel(a);
+    printf("Le factoriel de %d est %ld", a, res);
 
     return 0;
 }

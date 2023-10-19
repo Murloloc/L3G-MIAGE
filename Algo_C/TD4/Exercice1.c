@@ -4,19 +4,18 @@
 
 #include <stdio.h>
 
-float divise_par_deux(float n) {
+float rend_moitie(float n) {
 
-    n = n / 2;
-    return n;
+    return n/2;
 }
 
 int main() {
 
     float a,res;
 
-    printf("Saisissez un entier");
+    printf("Saisissez un entier\n");
     scanf("%f", &a);
-    res = divise_par_deux(a);
+    res = rend_moitie(a);
     printf("%.1f", res);
 
     return 0;

@@ -5,13 +5,13 @@
 
 #include <stdio.h>
 
-int indique_borne(float c,float t,float b) {
+int indique_borne(float c, float t, float b) {
 
     int m;
-    m=0;
+    m = 0;
 
-    while (c<b){
-        c=c*t;
+    while (c < b) {
+        c = c * t;
         m++;
     }
     return m;
@@ -19,18 +19,18 @@ int indique_borne(float c,float t,float b) {
 
 int main() {
 
-    float capital_initial,taux_mensuel,borne;
+    float capital_initial, taux_mensuel, borne;
     int mois;
 
     printf("Quel est le capital initial ?\n");
-    scanf("%f",&capital_initial);
+    scanf("%f", &capital_initial);
     printf("Quel est le taux mensuel?\n");
-    scanf("%f",&taux_mensuel);
+    scanf("%f", &taux_mensuel);
     printf("Quelle est votre borne ?\n");
-    scanf("%f",&borne);
+    scanf("%f", &borne);
 
-    mois= indique_borne(capital_initial,taux_mensuel,borne);
-    printf("Le capital aura depasse la borne au bout de %d mois\n",mois);
+    mois = indique_borne(capital_initial, taux_mensuel, borne);
+    printf("Le capital aura depasse la borne au bout de %d mois\n", mois);
 
     return 0;
 }

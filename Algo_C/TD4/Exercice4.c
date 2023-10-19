@@ -10,32 +10,30 @@
 
 #include <stdio.h>
 
-void affiche_etoiles(int n) {
+void affiche_ligne_etoile(int n) {
 
-    int i,j,nb_etoile;
+    int i;
 
     i=0;
-    nb_etoile=1;
-
-    while (i<=n){
-        j=0;
-        while (j<nb_etoile){
-            printf("*");
-            j++;
-        }
-        printf("\n");
-        nb_etoile++;
+    while (i<n){
+        printf("*");
         i++;
     }
+    printf("\n");
+    return;
 }
 
 int main() {
 
-    int a;
+    int nb_ligne,i;
 
-    printf("Saisissez un entier\n");
-    scanf("%d", &a);
-    affiche_etoiles(a);
+    printf("Donnez le nombre d'entier voulu\n");
+    scanf("%d", &nb_ligne);
 
+    i=1;
+    while (i<=nb_ligne){
+        affiche_ligne_etoile(i);
+        i++;
+    }
     return 0;
 }
