@@ -8,12 +8,13 @@
 
 void rempli_tableau(int n){
 
-    int i,t[i];
+    int i,t[n],x;
 
     i=0;
     while (i<N){
         printf("Donnez la valeur %d du tableau :\n",i+1);
-        t[i]=n;
+        scanf("%d",&x);
+        t[i]=x;
         i++;
     }
     return;
@@ -22,8 +23,6 @@ void rempli_tableau(int n){
 int main(){
 
     int t[N];
-
-
 
 
     return 0;
