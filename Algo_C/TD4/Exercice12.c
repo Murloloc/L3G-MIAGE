@@ -1,5 +1,5 @@
 //12. Écrire un sous-programme qui étant donné un tableau de n réels calcule l’écart type des éléments de ce tableau.
-// On utilisera le sous-programme moyenne de l’exercice précédent
+// On utilisera le sous-programme moyenne de l’exercice précédent.
 
 #include <stdio.h>
 #include <math.h>

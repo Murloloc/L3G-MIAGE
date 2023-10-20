@@ -1,5 +1,5 @@
 //13. Écrire un sous-programme qui étant donné un tableau de n réels rend la plus
-//grande valeur du tableau.
+//grande valeur du tableau
 
 #include <stdio.h>
 

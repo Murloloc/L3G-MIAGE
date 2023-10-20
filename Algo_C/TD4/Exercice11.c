@@ -1,7 +1,7 @@
 //11. Écrire un sous-programme en C qui remplit un tableau de n réels lus au clavier.
 //Écrire un sous-programme qui étant donné un tableau de n réels calcule la
 //moyenne des éléments du tableau. Utilisez ces sous-programmes dans un
-//programme principal qui travaille sur les notes de 25 étudiants.
+//programme principal qui travaille sur les notes de 25 étudiants
 
 #include <stdio.h>
 
