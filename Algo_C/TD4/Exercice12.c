@@ -58,7 +58,7 @@ int main(){
     scanf("%d",&nb);
     while (nb<1){
         printf("Votre nombre doit etre strictement positif re donnez un autre nombre\n");
-        scanf("%d",nb);
+        scanf("%d",&nb);
     }
 
     float t[nb];

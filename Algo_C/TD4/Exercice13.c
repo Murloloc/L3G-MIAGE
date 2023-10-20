@@ -6,13 +6,11 @@
 void rempli_tableau(float t[], int n) {
 
     int i;
-    float x;
 
     i = 0;
     while (i < n) {
         printf("Donnez la valeur %d du tableau :\n", i + 1);
-        scanf("%f", &x);
-        t[i] = x;
+        scanf("%f", &t[i]);
         i++;
     }
     return;
@@ -42,7 +40,7 @@ int main() {
     scanf("%d", &nb);
     while (nb < 1) {
         printf("Votre nombre doit etre strictement positif re donnez un autre nombre\n");
-        scanf("%d", nb);
+        scanf("%d",&nb);
     }
 
     float t[nb];
