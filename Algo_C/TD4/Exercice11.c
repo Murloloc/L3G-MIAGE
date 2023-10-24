@@ -7,34 +7,20 @@
 
 #define N 25
 
-void rempli_tableau(float t[], int n) {
+void rempli_tableau(float *tab, int n) {
 
     int i;
-    float x;
 
     i = 0;
     while (i < n) {
         printf("Donnez la valeur %d du tableau :\n", i + 1);
-        scanf("%f", &t[i]);
+        scanf("%f", &tab[i]);
         i++;
     }
     return;
 }
 
-//void affiche_tableau(float t[], int n) {
-//
-//    int i;
-//
-//    printf("Voici le tableau que vous avez rempli :\n");
-//    i = 0;
-//    while (i < n) {
-//        printf("%.2f\n", t[i]);
-//        i++;
-//    }
-//    return;
-//}
-
-float calcule_moyenne(float t[], int n) {
+float calcule_moyenne(float *tab, int n) {
 
     int i;
     float m;
@@ -42,7 +28,7 @@ float calcule_moyenne(float t[], int n) {
     i = 0;
     m = 0;
     while (i < n) {
-        m = m + t[i];
+        m = m + tab[i];
         i++;
     }
     return m / n;

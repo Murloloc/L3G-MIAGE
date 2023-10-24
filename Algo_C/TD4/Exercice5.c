@@ -13,28 +13,26 @@ void affiche_nfoisc(int n,char c) {
         printf("%c",c);
         i++;
     }
-    printf("\n");
     return;
 }
 
 int main() {
 
-    int i,nb_car,nb_ligne;
-    char b,rc;
+    int i,nb_ligne;
+    char carac,rc;
 
     printf("Combien de lignes voulez vous ?\n");
     scanf("%d",&nb_ligne);
     printf("Donnez le caractere que vous souhaitez dessiner\n");
     scanf("%c",&rc);
-    scanf("%c",&b);
+    scanf("%c",&carac);
 
-    i=0;
-    nb_car=1;
+    i=1;
 
-    while (i < nb_ligne) {
-        affiche_nfoisc(nb_car, b);
+    while (i <= nb_ligne) {
+        affiche_nfoisc(i, carac);
         i++;
-        nb_car++;
+        printf("\n");
     }
     return 0;
 }

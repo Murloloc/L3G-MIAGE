@@ -25,42 +25,40 @@ void affiche_nfoisc(int n, char c) {
 int main() {
 
     int i, nb_car, nb_ligne, nb_espace;
-    char c1, c2,c3;
+    char carac;
 
     printf("Combien de lignes voulez vous ?\n");
     scanf("%d", &nb_ligne);
 
-    i = 0;
     nb_car = 1;
     nb_espace = nb_ligne - 1;
-    c1 = '*';
-    c2 = 'o';
-    c3 = ' ';
+
+    i = 0;
 
     while (i < nb_ligne) {
 
-        affiche_nfoisc(nb_espace,c3);
+        affiche_nfoisc(nb_espace,' ');
 
         if (i % 2 == 0) {
-            affiche_nfoisc(nb_car, c1);
-            printf("\n");
-            nb_car = nb_car + 2;
-            nb_espace = nb_espace - 1;
+            carac='*';
+            affiche_nfoisc(nb_car, carac);
         } else {
-            affiche_nfoisc(nb_car, c2);
-            printf("\n");
-            nb_car = nb_car + 2;
-            nb_espace = nb_espace - 1;
+            carac='o';
+            affiche_nfoisc(nb_car, carac);
         }
         i++;
+        printf("\n");
+        nb_car = nb_car + 2;
+        nb_espace = nb_espace - 1;
     }
     i = 0;
     while (i < 2) {
-        nb_espace = nb_ligne-2;
-        affiche_nfoisc(nb_espace,c3);
-        affiche_nfoisc(3, c1);
+        carac='*';
+        nb_espace = nb_ligne - 2;
+        affiche_nfoisc(nb_espace, ' ');
+        affiche_nfoisc(3, carac);
         printf("\n");
-        i = i + 1;
+        i++;
     }
     return 0;
 }

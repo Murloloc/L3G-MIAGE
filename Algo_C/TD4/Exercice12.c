@@ -4,21 +4,20 @@
 #include <stdio.h>
 #include <math.h>
 
-void rempli_tableau(float t[], int n) {
+void rempli_tableau(float *tab, int n) {
 
     int i;
-    float x;
 
     i = 0;
     while (i < n) {
         printf("Donnez la valeur %d du tableau :\n", i + 1);
-        scanf("%f",&t[i]);
+        scanf("%f", &tab[i]);
         i++;
     }
     return;
 }
 
-float calcule_moyenne(float t[], int n) {
+float calcule_moyenne(float *t, int n) {
 
     int i;
     float m;
@@ -32,7 +31,7 @@ float calcule_moyenne(float t[], int n) {
     return m / n;
 }
 
-float calcule_ecart_type(float t[],int n){
+float calcule_ecart_type(float *t,int n){
 
     int i;
     float ecart_moyenne,variance;
@@ -47,7 +46,6 @@ float calcule_ecart_type(float t[],int n){
     return sqrt(variance);
 
 }
-
 
 int main(){
 

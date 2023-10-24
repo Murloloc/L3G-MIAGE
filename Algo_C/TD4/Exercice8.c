@@ -24,7 +24,6 @@ long calcule_factoriel(int x) {
 int main() {
 
     int p, n;
-    long res;
 
     printf("Combien d elements ?\n");
     scanf("%d", &p);
@@ -39,8 +38,7 @@ int main() {
         scanf("%d", &n);
     }
 
-    res = calcule_factoriel(n) / (calcule_factoriel(p)* calcule_factoriel(n - p));
-    printf("%ld\n", res);
+    printf("%ld\n", calcule_factoriel(n) / (calcule_factoriel(p) * calcule_factoriel(n - p)));
 
     return 0;
 }

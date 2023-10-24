@@ -3,28 +3,28 @@
 
 #include <stdio.h>
 
-void rempli_tableau(float t[], int n) {
+void rempli_tableau(float *tab, int n) {
 
     int i;
 
     i = 0;
     while (i < n) {
         printf("Donnez la valeur %d du tableau :\n", i + 1);
-        scanf("%f", &t[i]);
+        scanf("%f", &tab[i]);
         i++;
     }
     return;
 }
 
-float rend_max(float t[],int n){
+float rend_max(float *tab,int n){
 
     int i;
     float max;
-    max=t[0];
+    max=tab[0];
     i=1;
     while (i<n){
-        if (t[i]>max){
-            max=t[i];
+        if (tab[i]>max){
+            max=tab[i];
         }
         i++;
     }

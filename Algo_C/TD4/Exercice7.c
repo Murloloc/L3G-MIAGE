@@ -6,30 +6,30 @@
 
 float calcule_puissance(float x, int n) {
 
-    float res;
+    float P;
     int i;
 
     i = 0;
-    res = 1;
+    P = 1;
 
     while (i < n) {
-        res = res * x;
+        P = P * x;
         i++;
     }
-    return res;
+    return P;
 }
 
 int main() {
 
-    int a;
-    float res1;
+    int i;
+    float res;
 
-    a = 1;
+    i = 1;
 
-    while (a <= 10) {
-        res1 = calcule_puissance(a, a);
-        printf("%.2f\n", res1);
-        a++;
+    while (i <= 10) {
+        res = calcule_puissance(i, i);
+        printf("%d exposant %d vaut %.2f\n", i, i, res);
+        i++;
     }
     return 0;
 }
