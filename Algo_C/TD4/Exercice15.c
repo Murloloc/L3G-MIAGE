@@ -72,8 +72,7 @@ int main() {
     rempli_tableau(t, N);
     affiche_tab(t, N);
     printf("La moyenne est %.2f\n", calcule_moyenne(t, N));
-    printf("Voici le max du tab %.2f avec pour indice %d\n", rend_max_et_son_rang(t, N,&ind),ind);
-
+    printf("L'indice %d du tableau a pour valeur max du %.2f\n",ind,rend_max_et_son_rang(t, N,&ind));
 
     return 0;
 }
