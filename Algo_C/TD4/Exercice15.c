@@ -31,6 +31,29 @@ void rempli_tableau(float *tab, int n) {
     return;
 }
 
+void tri_a_bulle(float *tab, int n) {
+
+    int i, flag;
+    float ech;
+
+    flag = 1;
+    while (flag == 1) {
+        flag = 0;
+        i = 0;
+        while (i < n - 1) {
+            if (tab[i] < tab[i + 1]) {
+                ech = tab[i];
+                tab[i] = tab[i + 1];
+                tab[i + 1] = ech;
+                flag = 1;
+            }
+            i = i + 1;
+        }
+    }
+    return;
+}
+
+
 float calcule_moyenne(float *tab, int n) {
 
     int i;
@@ -73,6 +96,7 @@ int main() {
     affiche_tab(t, N);
     printf("La moyenne est %.2f\n", calcule_moyenne(t, N));
     printf("L'indice %d du tableau a pour valeur max du %.2f\n",ind,rend_max_et_son_rang(t, N,&ind));
+
 
     return 0;
 }
