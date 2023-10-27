@@ -17,15 +17,15 @@ void rempli_tableau(float *tab, int n) {
     return;
 }
 
-int rend_indice_plus_grande_valeur(float t[],int n){
+int rend_indice_plus_grande_valeur(float * tab,int n){
 
     int i,indice;
     float max;
-    max=t[0];
+    max=tab[0];
     i=1;
     while (i<n){
-        if (t[i]>max){
-            max=t[i];
+        if (tab[i]>max){
+            max=tab[i];
             indice=i;
         }
         i++;
