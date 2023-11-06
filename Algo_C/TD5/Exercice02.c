@@ -2,18 +2,16 @@
 //3 premiers caractères du mot
 
 #include <stdio.h>
-#include <string.h>
 
 #define N 30
 
 int main() {
 
-    char mot[N], abv[3];
+    char mot[N];
 
     printf("Donnez votre mot\n");
-    scanf("%s", mot);
-
-    printf("Voici les 3 premieres lettre de votre mot : %s", abv);
+    fgets(mot,30,stdin);
+    printf("Voici les 3 premieres lettre de votre mot : %.3s",mot);
 
     return 0;
 }

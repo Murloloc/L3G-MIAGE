@@ -28,7 +28,7 @@ int main() {
     int res;
 
     printf("Donnez votre mot\n");
-    scanf("%s", mot);
+    fgets(mot,30,stdin);
     printf("Quelle lettre cherchez vous ?\n");
     scanf("%c", &rc);
     scanf("%c", &lettre);
