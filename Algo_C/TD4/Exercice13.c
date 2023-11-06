@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 
+#define N 5
+
 void rempli_tableau(float *tab, int n) {
 
     int i;
@@ -16,15 +18,15 @@ void rempli_tableau(float *tab, int n) {
     return;
 }
 
-float rend_max(float *tab,int n){
+float rend_max(float *tab, int n) {
 
     int i;
     float max;
-    max=tab[0];
-    i=1;
-    while (i<n){
-        if (tab[i]>max){
-            max=tab[i];
+    max = tab[0];
+    i = 1;
+    while (i < n) {
+        if (tab[i] > max) {
+            max = tab[i];
         }
         i++;
     }
@@ -34,20 +36,18 @@ float rend_max(float *tab,int n){
 int main() {
 
     int nb;
-    float max;
+    float max, t[N];
 
     printf("Combien de valeurs voulez vous ?\n");
     scanf("%d", &nb);
-    while (nb < 1) {
+    while (nb < 1 || nb > N) {
         printf("Votre nombre doit etre strictement positif re donnez un autre nombre\n");
-        scanf("%d",&nb);
+        scanf("%d", &nb);
     }
 
-    float t[nb];
-
-    rempli_tableau(t,nb);
-    max= rend_max(t,nb);
-    printf("La valeur max du tableau est %.2f\n",max);
+    rempli_tableau(t, nb);
+    max = rend_max(t, nb);
+    printf("La valeur max du tableau est %.2f\n", max);
 
     return 0;
 }

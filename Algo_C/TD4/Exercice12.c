@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <math.h>
 
+#define N 100
+
 void rempli_tableau(float *tab, int n) {
 
     int i;
@@ -31,15 +33,15 @@ float calcule_moyenne(float *t, int n) {
     return m / n;
 }
 
-float calcule_ecart_type(float *t,int n){
+float calcule_ecart_type(float *t, int n) {
 
     int i;
-    float ecart_moyenne,variance;
+    float ecart_moyenne, variance;
 
     i = 0;
     ecart_moyenne = 0;
     while (i < n) {
-        ecart_moyenne = ecart_moyenne + ((t[i] - calcule_moyenne(t,n)) * (t[i] - calcule_moyenne(t,n)));
+        ecart_moyenne = ecart_moyenne + ((t[i] - calcule_moyenne(t, n)) * (t[i] - calcule_moyenne(t, n)));
         i = i + 1;
     }
     variance = ecart_moyenne / n;
@@ -47,23 +49,22 @@ float calcule_ecart_type(float *t,int n){
 
 }
 
-int main(){
+int main() {
 
     int nb;
     float ecart_type;
+    float t[N];
 
     printf("Combien de valeurs voulez vous ?\n");
-    scanf("%d",&nb);
-    while (nb<1){
+    scanf("%d", &nb);
+    while (nb < 1) {
         printf("Votre nombre doit etre strictement positif re donnez un autre nombre\n");
-        scanf("%d",&nb);
+        scanf("%d", &nb);
     }
 
-    float t[nb];
-
-    rempli_tableau(t,nb);
-    ecart_type= calcule_ecart_type(t,nb);
-    printf("L'ecart type est de %.2f\n",ecart_type);
+    rempli_tableau(t, nb);
+    ecart_type = calcule_ecart_type(t, nb);
+    printf("L'ecart type est de %.2f\n", ecart_type);
 
     return 0;
 }

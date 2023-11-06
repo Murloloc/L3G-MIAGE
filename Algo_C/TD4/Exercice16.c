@@ -3,7 +3,9 @@
 //occurrence.
 
 #include <stdio.h>
-#define N 10
+
+#define N 5
+
 void rempli_tableau(float *tab, int n) {
 
     int i;
@@ -17,29 +19,37 @@ void rempli_tableau(float *tab, int n) {
     return;
 }
 
-int cherche_valeur(float *tab, int n, float x) {
+void cherche_valeur_et_rend_premiere_occurence(float *tab, int n, float x) {
 
-    int i, indice;
+    int i, indice, flag;
 
     i = 0;
-    while (i < n) {
+    indice = 0;
+    flag = 0;
+
+    while (i < n && flag == 0) {
         if (tab[i] == x) {
             indice = i;
+            flag = 1;
         }
         i++;
     }
-    return indice;
+    if (flag == 1) {
+        printf("La valeur %.2f appartient au tab avec pour indice %d", x, indice);
+    } else {
+        printf("La valeur %.2f n appartient pas au tab", x);
+    }
+    return;
 }
 
 int main() {
 
-    float t[N],valeur_cherchee;
+    float t[N], valeur_cherchee;
 
-    rempli_tableau(t,N);
-    printf("Donnez la valeur cherchee dans le tableau");
-    scanf("%f",&valeur_cherchee);
-    printf("La premiere occurence de cette valeur %d",cherche_valeur(t,N,valeur_cherchee));
-
+    rempli_tableau(t, N);
+    printf("Donnez la valeur cherchee dans le tableau\n");
+    scanf("%f", &valeur_cherchee);
+    cherche_valeur_et_rend_premiere_occurence(t, N, valeur_cherchee);
 
 
     return 0;
