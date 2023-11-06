@@ -51,7 +51,6 @@ int main() {
     rempli_tableau(t1, N1);
     rempli_tableau(t2, N2);
 
-
     res = rend_plus_grande_moyenne(t1, t2, N1, N2);
     printf("%f", res);
 
