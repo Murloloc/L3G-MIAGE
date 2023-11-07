@@ -27,7 +27,7 @@ int main() {
 
     int nb_ligne,i;
 
-    printf("Donnez le nombre d'entier voulu\n");
+    printf("Donnez le nombre de ligne voulu\n");
     scanf("%d", &nb_ligne);
 
     i=1;

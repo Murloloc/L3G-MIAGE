@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-#define N 10
+#define N 5
 
 void affiche_tab(float *tab, int n) {
 
@@ -11,9 +11,8 @@ void affiche_tab(float *tab, int n) {
     i = 0;
 
     while (i < n) {
-        printf("%.2f", tab[i]);
+        printf("%.2f\n", tab[i]);
         i++;
-        printf("\n");
     }
     return;
 }
@@ -41,7 +40,7 @@ void tri_a_bulle(float *tab, int n) {
         flag = 0;
         i = 0;
         while (i < n - 1) {
-            if (tab[i] < tab[i + 1]) {
+            if (tab[i] > tab[i + 1]) {
                 ech = tab[i];
                 tab[i] = tab[i + 1];
                 tab[i + 1] = ech;
@@ -57,15 +56,15 @@ void tri_a_bulle(float *tab, int n) {
 float calcule_moyenne(float *tab, int n) {
 
     int i;
-    float m;
+    float s;
 
     i = 0;
-    m = 0;
+    s = 0;
     while (i < n) {
-        m = m + tab[i];
+        s = s + tab[i];
         i++;
     }
-    return m / n;
+    return s / n;
 }
 
 float rend_max_et_son_rang(float *tab, int n, int *p) {
@@ -83,19 +82,22 @@ float rend_max_et_son_rang(float *tab, int n, int *p) {
         }
         i++;
     }
-    *p=rang_max;
+    *p = rang_max;
     return max;
 }
 
 int main() {
 
-    float t[N];
+    float t[N], maximum;
     int ind;
 
     rempli_tableau(t, N);
     affiche_tab(t, N);
     printf("La moyenne est %.2f\n", calcule_moyenne(t, N));
-    printf("L'indice %d du tableau a pour valeur max du %.2f\n",ind,rend_max_et_son_rang(t, N,&ind));
+    maximum = rend_max_et_son_rang(t, N, &ind);
+    printf("Le max est %.2f avec pour indice %d\n", maximum, ind);
+    tri_a_bulle(t,N);
+    affiche_tab(t,N);
 
 
     return 0;
