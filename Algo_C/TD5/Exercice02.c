@@ -10,8 +10,10 @@ int main() {
     char mot[N];
 
     printf("Donnez votre mot\n");
-    fgets(mot,30,stdin);
-    printf("Voici les 3 premieres lettre de votre mot : %.3s",mot);
+    fgets(mot, 30, stdin);
+    printf("%.3s", mot);
+    //ou un while mais nul
+    //ou on crée mot2 et mot2[0]=mot[0] ... mot2[3]="/0"
 
     return 0;
 }

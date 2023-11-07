@@ -6,7 +6,7 @@
 
 #define N 30
 
-int rendNombreOccurenceLettre(char *m, char l) {
+int compte_x(char *m) {
 
     int i, cpt;
 
@@ -14,7 +14,7 @@ int rendNombreOccurenceLettre(char *m, char l) {
     cpt = 0;
 
     while (i < strlen(m)) {
-        if (m[i] == l) {
+        if (m[i] == 'x') {
             cpt++;
         }
         i++;
@@ -24,17 +24,14 @@ int rendNombreOccurenceLettre(char *m, char l) {
 
 int main() {
 
-    char mot[N], lettre, rc;
+    char mot[N];
     int res;
 
     printf("Donnez votre mot\n");
-    fgets(mot,30,stdin);
-    printf("Quelle lettre cherchez vous ?\n");
-    scanf("%c", &rc);
-    scanf("%c", &lettre);
+    fgets(mot, 30, stdin);
 
-    res = rendNombreOccurenceLettre(mot, lettre);
-    printf("La lettre %c apparait %d fois dans le mot %s\n", lettre, res, mot);
+    res = compte_x(mot);
+    printf("La lettre x apparait %d fois dans le mot %s\n", res, mot);
 
 
     return 0;

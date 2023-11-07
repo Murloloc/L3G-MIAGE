@@ -6,15 +6,23 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(){
+int main() {
 
-    char mot[30];
+    char mot[80];
+    int i;
 
     printf("Donnez votre mot\n");
-    fgets(mot,30,stdin);
+    fgets(mot, 80, stdin);
 
+    i = 0;
 
+    while (i < strlen(mot)) {
 
+        mot[i] = mot[i] - 32;
+        i=i+2;
+    }
+
+    printf("%s", mot);
 
     return 0;
 }

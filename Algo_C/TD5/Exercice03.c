@@ -9,11 +9,12 @@
 
 int main() {
 
-    char mot[N];
+    char mot[30];
 
     printf("Donnez votre mot\n");
     fgets(mot,30,stdin);
-    printf("Voici les 2  dernieres lettres de votre mot : %c%c",mot[strlen(mot)-1],mot[strlen(mot)-2]);
+    printf("%c%c", mot[strlen(mot) - 3], mot[strlen(mot) - 2]);
+    //avec scanf -2 -1
 
     return 0;
 }

@@ -6,7 +6,7 @@
 
 #define N 30
 
-int contientZ(char *m) {
+void contientZ(char *m) {
 
     int i, flag;
 
@@ -19,7 +19,12 @@ int contientZ(char *m) {
         }
         i++;
     }
-    return flag;
+    if (flag == 1) {
+        printf("Le mot contient le caractere z\n");
+    } else {
+        printf("Le mot ne contient pas le caractere z");
+    }
+    return;
 }
 
 int main() {
@@ -29,11 +34,9 @@ int main() {
     printf("Donnez votre mot\n");
     fgets(mot,30,stdin);
 
-    if (contientZ(mot) == 1) {
-        printf("Le mot contient le caractere z\n");
-    } else {
-        printf("Le mot ne contient pas le caractere z");
-    }
+    contientZ(mot);
+
+
     return 0;
 }
 
