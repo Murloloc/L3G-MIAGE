@@ -1,27 +1,27 @@
 //6. Écrire un sous-programme étant donné un caractère, rend 1 si c’est un chiffre, 0 sinon
 
 #include <stdio.h>
-#include <string.h>
 
-int RendChiffreOuNon(char c){
+int estChiffre(char c) {
 
-    if (c==){
+    if (c >= '0' && c <= '9') {
         return 1;
-    } else{
+    } else {
         return 0;
     }
-
-
 }
 
-int main(){
+int main() {
 
     char carac;
 
     printf("Donnez votre caractere :\n");
-    scanf("%c",&carac);
+    scanf("%c", &carac);
 
-
-
-    return 0;
+    if (estChiffre(carac)==1){
+        printf("Le caractere est un chiffre\n");
+    }else{
+        printf("Le caractere n est pas un chiffre\n");
+    }
+        return 0;
 }
