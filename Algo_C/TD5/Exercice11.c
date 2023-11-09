@@ -5,10 +5,11 @@
 
 #include <stdio.h>
 #include <string.h>
-
+#define N 50
 int main() {
 
     char date[11];
+    char Listemois[12][10] = { "janvier", "février", "Mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"};
     char mois[3];
 
     printf("Donnez votre date de naissance dans le format jj/mm/aaaa \n");

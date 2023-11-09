@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define N 3
+#define N 2
 
 typedef struct {
     int numClient;
@@ -29,13 +29,6 @@ typedef struct {
     int numDep;
     float montFact;
 } ENREGISTREMENT;
-
-typedef struct {
-    int numClient;
-    int nbFoyer;
-    int numDep;
-    float montFact;
-} ENREGISTREMENT2;
 
 void rempli_enregistrement(ENREGISTREMENT *tab, int n) {
 
@@ -76,6 +69,20 @@ void affiche_enregistrement(ENREGISTREMENT *tab, int n) {
     return;
 }
 
+void affiche_montant_bouches_du_rhone(ENREGISTREMENT *tab, int n) {
+
+    int i;
+    i = 0;
+    while (i < n) {
+        if (tab[i].numDep == 13) {
+            printf("\nLe client numero %d habitant des Bouches du Rhone a une facture de %f euros", i + 1,
+                   tab[i].montFact);
+        }
+        i++;
+    }
+    return;
+}
+
 float calcule_moyenne(ENREGISTREMENT *tab, int n) {
 
     int i;
@@ -90,81 +97,91 @@ float calcule_moyenne(ENREGISTREMENT *tab, int n) {
     return s / n;
 }
 
-float rend_min(ENREGISTREMENT *tab, int n) {
+float calcule_moyenne_foyer_moins_de_3(ENREGISTREMENT *tab, int n) {
 
-    int i;
+    int i, cpt;
+    float s;
+
+    i = 0;
+    s = 0;
+    cpt = 0;
+    while (i < N) {
+        if (tab[i].nbFoyer < 3) {
+            s = s + tab[i].montFact;
+            cpt++;
+        }
+        i++;
+    }
+    if (cpt == 0) {
+        return 0;
+    } else {
+        return s / cpt;
+    }
+}
+
+
+void affiche_min_au_moins_2(ENREGISTREMENT *tab, int n) {
+
+    int i, flag;
     float min;
-
-    min = tab[0].montFact;
-    i = 1;
+    i = 0;
+    flag = 0;
+    while (i < n && flag == 0) {
+        if (tab[i].nbFoyer >= 2) {
+            min = tab[i].montFact;
+            flag=1;
+        }
+        i++;
+    }
     while (i < n) {
-        if (tab[i].montFact < min) {
+        if (tab[i].montFact < min && tab[i].nbFoyer >= 2) {
             min = tab[i].montFact;
         }
         i++;
     }
-    return min;
+    if (flag == 0) {
+        printf("\nIl n'y a pas de foyer ou il y a au moins 2 personnes\n");
+    } else {
+        printf("\nLa plus petite facture des clients ayant au moins 2 personnes dans leur foyer est de %.2f\n", min);
+    }
+    return;
 }
 
 int main() {
 
-    ENREGISTREMENT t[N],temp[N],t2[N];
-    float moyenne, montant13, moyenneFactureFoyerMoinsDe3,minFactureFoyerAuMoins2;
-    int i, cpt;
+    ENREGISTREMENT t[N], t2[N];
+    float moyenne, moyenneFactureFoyerMoinsDe3, minFactureFoyerAuMoins2;
+
 
     rempli_enregistrement(t, N);
     affiche_enregistrement(t, N);
     moyenne = calcule_moyenne(t, N);
     printf("\nLa moyenne des factures est de %.2f\n", moyenne);
 
-    i = 0;
-    montant13 = 0;
-    while (i < N) {
-        if (t[i].numDep == 13) {
-            montant13 = montant13 + t[i].montFact;
-        }
-        i++;
-    }
-    printf("\nLe montant de la facture des clients du departement 13 est : %.2f\n", montant13);
+    affiche_montant_bouches_du_rhone(t, N);
 
-    i = 0;
-    cpt = 0;
-    while (i < N) {
-        if (t[i].nbFoyer < 3) {
-            temp[cpt] = t[i];
-            cpt++;
-        }
-        i++;
+    moyenneFactureFoyerMoinsDe3 = calcule_moyenne_foyer_moins_de_3(t, N);
+    if (moyenneFactureFoyerMoinsDe3==0){
+        printf("Il n'y a aucun foyer de moins de 3 personnes");
+    } else {
+        printf("\nLa moyenne des factures des foyers de moins de 3 personnes est : %.2f\n",
+               moyenneFactureFoyerMoinsDe3);
     }
 
-    moyenneFactureFoyerMoinsDe3 = calcule_moyenne(temp, cpt);
-    printf("\nLa moyenne des factures des foyers de moins de 3 personnes est : %.2f\n", moyenneFactureFoyerMoinsDe3);
+    affiche_min_au_moins_2(t, N);
 
-    i=0;
-    cpt=0;
-    while (i<N){
-        if (t[i].nbFoyer>=2){
-            temp[cpt]=t[i];
-            cpt++;
-        }
-        i++;
-    }
-
-    minFactureFoyerAuMoins2 = rend_min(temp,cpt);
-    printf("\nLa plus petite facture des foyers de au moins 2 personnes est : %.2f\n", minFactureFoyerAuMoins2);
 
     printf("\n Veuillez maintenant remplir les informations pour l'annee precedente \n");
 
     rempli_enregistrement(t2, N);
 
-    if (calcule_moyenne(t,N)> calcule_moyenne(t2,N)) {
-        printf("\nLa moyenne la plus elevee est celle de cette annee : %.2f\n", calcule_moyenne(t,N));
-    } else if (calcule_moyenne(t,N)< calcule_moyenne(t2,N)) {
-        printf("\nLa moyenne la plus elevee est celle de l'annee derniere : %.2f\n", calcule_moyenne(t2,N));
+    if (calcule_moyenne(t, N) > calcule_moyenne(t2, N)) {
+        printf("\nLa moyenne la plus elevee est celle de cette annee : %.2f\n", calcule_moyenne(t, N));
+    } else if (calcule_moyenne(t, N) < calcule_moyenne(t2, N)) {
+        printf("\nLa moyenne la plus elevee est celle de l'annee derniere : %.2f\n", calcule_moyenne(t2, N));
     } else {
         printf("\nLes deux moyennes des deux annes sont egales et valent %.2f\n", calcule_moyenne(t, N));
     }
-
 
     return 0;
 }
