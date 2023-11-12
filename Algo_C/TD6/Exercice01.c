@@ -36,14 +36,14 @@ void rempli_enregistrement(ENREGISTREMENT *tab, int n) {
 
     i = 0;
     while (i < n) {
-        printf("Donnez les informations de l'enregistement %d:\n", i + 1);
-        printf("Numero du client : ");
+        printf("\nDonnez les informations de l'enregistement %d:\n", i + 1);
+        printf("\nNumero du client : ");
         scanf("%d", &tab[i].numClient);
-        printf("Nombre d'habidant dans le foyer : ");
+        printf("\nNombre d'habidant dans le foyer : ");
         scanf("%d", &tab[i].nbFoyer);
-        printf("Numero du departement : ");
+        printf("\nNumero du departement : ");
         scanf("%d", &tab[i].numDep);
-        printf("Montant de la derniere facture du client : ");
+        printf("\nMontant de la derniere facture du client : ");
         scanf("%f", &tab[i].montFact);
 
         i++;
@@ -55,7 +55,7 @@ void affiche_enregistrement(ENREGISTREMENT *tab, int n) {
 
     int i;
 
-    printf("Voici le tableau d'enregistrement :\n");
+    printf("\nVoici le tableau d'enregistrement :\n");
     i = 0;
     while (i < n) {
         printf("Enregistrement %3d | ", i + 1);
@@ -150,7 +150,7 @@ void affiche_min_au_moins_2(ENREGISTREMENT *tab, int n) {
 int main() {
 
     ENREGISTREMENT t[N], t2[N];
-    float moyenne, moyenneFactureFoyerMoinsDe3, minFactureFoyerAuMoins2;
+    float moyenne, moyenneFactureFoyerMoinsDe3;
 
 
     rempli_enregistrement(t, N);
@@ -169,7 +169,6 @@ int main() {
     }
 
     affiche_min_au_moins_2(t, N);
-
 
     printf("\n Veuillez maintenant remplir les informations pour l'annee precedente \n");
 

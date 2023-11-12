@@ -8,6 +8,7 @@
 //les sous-programmes et affichera les résultats.
 //Vous programmerez le main sous la forme d’un système de menu qui permet à l’utilisateur de
 //choisir n’importe quelle opération dans n’importe quel ordre et autant de fois qu’il le souhaite.
+
 //NB : On rappelle que sauf exception, les données sont lues dans le main et les résultats sont
 //affichés dans le main. L’exception concerne essentiellement le sous-programme de remplissage
 //de tableau (qui contient des scanf) et le sous-programme d’affichage d’un tableau (qui contient
@@ -15,8 +16,8 @@
 
 #include <stdio.h>
 #include <string.h>
-
-#define N 2
+#include <stdlib.h>
+#define N 1
 
 typedef struct {
     char nom[80];
@@ -61,22 +62,62 @@ float rend_note_en_fonction_du_nom(NOTEINFO *tab, int n, char m[80]) {
     }
 }
 
-char rend_etu_ayant_note_min(NOTEINFO *tab, int n) {
+char *rend_etu_ayant_note_min(NOTEINFO *tab, int n) {
 
-    int i, flag;
-    char nomMin[80];
+    int i;
+    float min;
+    char* nomMin;
 
+    min = tab[0].note;
+    nomMin = strdup(tab[0].nom);
+    i = 1;
+    while (i < n) {
+        if (tab[i].note < min) {
+            min = tab[i].note;
+            free(nomMin);
+            nomMin = strdup(tab[i].nom);
+        }
+        i++;
+    }
+    return nomMin;
+}
 
+float calcule_moyenne(NOTEINFO *tab, int n) {
 
+    int i;
+    float s;
 
-    return nomMin[80];
+    i = 0;
+    s = 0;
+    while (i < n) {
+        s = s + tab[i].note;
+        i++;
+    }
+    return s / n;
+}
+char *noms_note_inferieure_5(NOTEINFO *tab, int n) {
+
+    int i;
+    char *noms = malloc(80 * n);
+
+    noms[0] = '\0';
+    i=0;
+
+    while(i<n) {
+        if (tab[i].note < 5.0) {
+            strcat(noms, tab[i].nom);
+            strcat(noms, " ");
+        }
+        i++;
+    }
+    return noms;
 }
 
 int main() {
 
     NOTEINFO t[N];
-    int choix;
-    float note;
+    int choix,valid_input;
+    float note,moyenne;
     char nom[80];
 
     remplit_tab(t, N);
@@ -87,39 +128,53 @@ int main() {
     printf("Tapez 4 si vous voulez afficher tous les etudiants ayant eu une note inferieure a 5\n");
     printf("Tapez 5 si vous voulez sortir\n");
 
-    printf("\n Que voulez vous faire : ");
-    scanf("%d", &choix);
 
-    while (choix < 1 || choix > 5) {
-        printf("\nVotre choix n'est pas valide re donnez votre choix :");
-        scanf("%d", &choix);
-    }
+    do {
 
-    while (choix != 5) {
+        valid_input = 0;
+
+        while (valid_input == 0) {
+
+            printf("\n\nQue voulez-vous faire : ");
+
+            if (scanf("%d", &choix) != 1 || choix < 1 || choix > 5) {
+                // La saisie n'est pas un entier entre 1 et 5
+                printf("\nSaisie incorrecte. Veuillez entrer un nombre entier entre 1 et 5.\n");
+                // Nettoie le tampon d'entrée
+                while (getchar() != '\n');
+            } else {
+                valid_input = 1;
+            }
+        }
 
         if (choix == 1) {
             printf("\nDonnez le nom de l'etudiant dont vous voulez connaitre la note :");
             scanf("%s", nom);
             note = rend_note_en_fonction_du_nom(t, N, nom);
             if (note == -1) {
-                printf("Le nom saisi n'existe pas");
+                printf("\nLe nom saisi n'existe pas");
             } else {
-                printf("\n Sa note est %.2f", note);
+                printf("\nSa note est %.2f", note);
             }
         }
-//        if (choix == 2) {
-//
-//        }
-//        if (choix == 3) {
-//
-//        }
-//        if (choix == 4){
-//
-//        }
-        printf("\nQue voulez vous faire maintenant : ");
-        scanf("%d", &choix);
-    }
+        if (choix == 2) {
+            printf("\nL'etudiant ayant eu la plus mauvaise note est %s", rend_etu_ayant_note_min(t, N));
+        }
 
+        if (choix == 3) {
+            moyenne = calcule_moyenne(t, N);
+            printf("\nLa moyenne de la classe est : %.2f", moyenne);
+        }
+        if (choix == 4) {
+            char *noms = noms_note_inferieure_5(t, N);
+            printf("\nVoici le ou les etudiants ayant une note inferieure a 5: %s", noms);
+            free(noms);
+        }
+    }while (choix != 5);
+
+    printf("\nVous avez decide de sortir, fin du programme");
 
     return 0;
 }
+
+
