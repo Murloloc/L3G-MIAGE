@@ -34,3 +34,20 @@
 //On supposera qu’il y a au maximum 100 abonnés et 500 livres. On suppose qu’au démarrage
 //du logiciel, il n’y a aucun abonné et aucun livre. Un ensemble de données initiales (base
 //d’adhérents, base de livres) sera lu dans des fichiers.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define N 5
+
+typedef struct {
+
+
+}ABONNE;
+
+int main(){
+
+
+    return 0;
+}
