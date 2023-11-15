@@ -46,7 +46,16 @@ typedef struct {
 
 }ABONNE;
 
+typedef struct{
+
+
+}LIVRE;
+
 int main(){
+
+
+
+
 
 
     return 0;

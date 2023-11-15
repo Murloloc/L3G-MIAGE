@@ -97,7 +97,7 @@ float calcule_moyenne(ENREGISTREMENT *tab, int n) {
     return s / n;
 }
 
-float calcule_moyenne_foyer_moins_de_3(ENREGISTREMENT *tab, int n) {
+float calcule_moyenne_foyer_moins_de_3(ENREGISTREMENT *tab, int n, float *moy) {
 
     int i, cpt;
     float s;
@@ -115,42 +115,41 @@ float calcule_moyenne_foyer_moins_de_3(ENREGISTREMENT *tab, int n) {
     if (cpt == 0) {
         return 0;
     } else {
-        return s / cpt;
+        *moy=s/cpt;
+        return 1;
     }
 }
 
-
-void affiche_min_au_moins_2(ENREGISTREMENT *tab, int n) {
+int rend_min_au_moins_2(ENREGISTREMENT *tab, int n,float *min) {
 
     int i, flag;
-    float min;
+
     i = 0;
     flag = 0;
     while (i < n && flag == 0) {
         if (tab[i].nbFoyer >= 2) {
-            min = tab[i].montFact;
-            flag=1;
+            flag = 1;
+        } else {
+            i++;
+        }
+    }
+    if (flag == 1) {
+        *min = tab[i].montFact;
+        while (i < n) {
+            if (tab[i].nbFoyer >= 2 && tab[i].montFact < *min) {
+                *min = tab[i].montFact;
+            }
         }
         i++;
     }
-    while (i < n) {
-        if (tab[i].montFact < min && tab[i].nbFoyer >= 2) {
-            min = tab[i].montFact;
-        }
-        i++;
-    }
-    if (flag == 0) {
-        printf("\nIl n'y a pas de foyer ou il y a au moins 2 personnes\n");
-    } else {
-        printf("\nLa plus petite facture des clients ayant au moins 2 personnes dans leur foyer est de %.2f\n", min);
-    }
-    return;
+    return flag;
 }
 
 int main() {
 
     ENREGISTREMENT t[N], t2[N];
-    float moyenne, moyenneFactureFoyerMoinsDe3;
+    float moyenne, moyenneFactureFoyerMoinsDe3,moyenneMoins3,minimum;
+    int drapeau;
 
 
     rempli_enregistrement(t, N);
@@ -160,15 +159,19 @@ int main() {
 
     affiche_montant_bouches_du_rhone(t, N);
 
-    moyenneFactureFoyerMoinsDe3 = calcule_moyenne_foyer_moins_de_3(t, N);
+    moyenneFactureFoyerMoinsDe3 = calcule_moyenne_foyer_moins_de_3(t, N,&moyenneMoins3);
     if (moyenneFactureFoyerMoinsDe3==0){
         printf("Il n'y a aucun foyer de moins de 3 personnes");
     } else {
-        printf("\nLa moyenne des factures des foyers de moins de 3 personnes est : %.2f\n",
-               moyenneFactureFoyerMoinsDe3);
+        printf("\nLa moyenne des factures des foyers de moins de 3 personnes est : %.2f\n",moyenneMoins3);
     }
 
-    affiche_min_au_moins_2(t, N);
+    drapeau=rend_min_au_moins_2(t, N,&minimum);
+    if(drapeau==0){
+        printf("Il n'y a pas de foyer en dessous de 2 habitants\n");
+    }else{
+        printf("La facture minimale est %.2f",minimum);
+    }
 
     printf("\n Veuillez maintenant remplir les informations pour l'annee precedente \n");
 

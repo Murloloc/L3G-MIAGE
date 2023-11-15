@@ -43,9 +43,9 @@ void remplit_tab(INFOS *tab, int n) {
     return;
 }
 
-int rend_nombre_habitant_selon_ville(INFOS *tab, int n, char *v) {
+int rend_nombre_habitant_selon_ville(INFOS *tab, int n, char *v,int *cpt) {
 
-    int i, cpt, flag;
+    int i,flag;
 
     i = 0;
     cpt = 0;
@@ -59,13 +59,14 @@ int rend_nombre_habitant_selon_ville(INFOS *tab, int n, char *v) {
         i++;
     }
     if (flag == 0) {
-        return -1;
+        return 0;
     } else {
-        return cpt;
+        *cpt;
+        return 1;
     }
 }
 
-int rend_sexe_selon_nom(INFOS *tab, int n, char *name) {
+int rend_sexe_selon_nom(INFOS *tab, int n, char *name,int *genre) {
 
     int i, flag, sexe;
 
@@ -81,9 +82,10 @@ int rend_sexe_selon_nom(INFOS *tab, int n, char *name) {
         i++;
     }
     if (flag == 0) {
-        return -1;
+        return 0;
     } else {
-        return sexe;
+        *genre=sexe;
+        return 1;
     }
 }
 
@@ -106,7 +108,7 @@ int rend_nombre_maries_aix(INFOS *tab, int n) {
 int main() {
 
     INFOS t[N];
-    int nb, valid_input, choix, res1, res2, res3;
+    int nb, valid_input, choix,res3,drapeau1,drapeau2,compteur1,sexe;
     char ville[80], nom[80];
 
 
@@ -117,7 +119,6 @@ int main() {
         while (getchar() != '\n');
         printf("\nCe nombre de personne n'est pas accepte, re donnez un nombre compris entre 1 et 1000 :");
         scanf("%d", &nb);
-
     }
 
     remplit_tab(t, nb);
@@ -148,20 +149,20 @@ int main() {
         if (choix == 1) {
             printf("\nDe quelle ville voulez vous connaitre le nombre d'habitant : ");
             scanf("%s", ville);
-            res1 = rend_nombre_habitant_selon_ville(t, nb, ville);
-            if (res1 == -1) {
+            drapeau1 = rend_nombre_habitant_selon_ville(t, nb, ville,&compteur1);
+            if (drapeau1==0) {
                 printf("\nCette ville n'a pas ete saisie lors de l'enregistrement des donnees");
             } else {
-                printf("\nIl y a %d habitant dans %s", res1, ville);
+                printf("\nIl y a %d habitant dans %s", compteur1, ville);
             }
         }
         if (choix == 2) {
             printf("\nDonnez le nom de la personne dont vous voulez connaitre le sexe : ");
             scanf("%s", nom);
-            res2 = rend_sexe_selon_nom(t, nb, nom);
-            if (res2 == -1) {
+            drapeau2 = rend_sexe_selon_nom(t, nb, nom,&sexe);
+            if (drapeau2 == 0) {
                 printf("\nCe nom n'est pas dans les informations fournies");
-            } else if (res2 == 1) {
+            } else if (sexe == 1) {
                 printf("\n%s est un homme", nom);
             } else {
                 printf("\n%s est une femme", nom);

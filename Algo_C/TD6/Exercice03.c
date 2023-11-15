@@ -40,7 +40,7 @@ void remplit_tab(NOTEINFO *tab, int n) {
     return;
 }
 
-float rend_note_en_fonction_du_nom(NOTEINFO *tab, int n, char m[80]) {
+int rend_note_en_fonction_du_nom(NOTEINFO *tab, int n, char m[80],float *mark) {
 
     float note;
     int i, flag;
@@ -56,9 +56,10 @@ float rend_note_en_fonction_du_nom(NOTEINFO *tab, int n, char m[80]) {
         i++;
     }
     if (flag == 0) {
-        return -1;
+        return 0;
     } else {
-        return note;
+        *mark=note;
+        return 1;
     }
 }
 
@@ -116,9 +117,10 @@ char *noms_note_inferieure_5(NOTEINFO *tab, int n) {
 int main() {
 
     NOTEINFO t[N];
-    int choix,valid_input;
+    int choix,valid_input,drapeau;
     float note,moyenne;
-    char nom[80];
+    char nom[80], nomsInf5[80];
+
 
     remplit_tab(t, N);
 
@@ -150,8 +152,8 @@ int main() {
         if (choix == 1) {
             printf("\nDonnez le nom de l'etudiant dont vous voulez connaitre la note :");
             scanf("%s", nom);
-            note = rend_note_en_fonction_du_nom(t, N, nom);
-            if (note == -1) {
+            drapeau = rend_note_en_fonction_du_nom(t, N, nom,&note);
+            if (drapeau == 0) {
                 printf("\nLe nom saisi n'existe pas");
             } else {
                 printf("\nSa note est %.2f", note);
@@ -166,9 +168,9 @@ int main() {
             printf("\nLa moyenne de la classe est : %.2f", moyenne);
         }
         if (choix == 4) {
-            char *noms = noms_note_inferieure_5(t, N);
-            printf("\nVoici le ou les etudiants ayant une note inferieure a 5: %s", noms);
-            free(noms);
+            strcpy(nomsInf5,noms_note_inferieure_5(t, N));
+            printf("\nVoici le ou les etudiants ayant une note inferieure a 5: %s", nomsInf5);
+            free(nomsInf5);
         }
     }while (choix != 5);
 
