@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 #define N 1
 
 typedef struct {
@@ -40,7 +41,7 @@ void remplit_tab(NOTEINFO *tab, int n) {
     return;
 }
 
-int rend_note_en_fonction_du_nom(NOTEINFO *tab, int n, char m[80],float *mark) {
+int rend_note_en_fonction_du_nom(NOTEINFO *tab, int n, char m[80], float *mark) {
 
     float note;
     int i, flag;
@@ -58,7 +59,7 @@ int rend_note_en_fonction_du_nom(NOTEINFO *tab, int n, char m[80],float *mark) {
     if (flag == 0) {
         return 0;
     } else {
-        *mark=note;
+        *mark = note;
         return 1;
     }
 }
@@ -67,7 +68,7 @@ char *rend_etu_ayant_note_min(NOTEINFO *tab, int n) {
 
     int i;
     float min;
-    char* nomMin;
+    char *nomMin;
 
     min = tab[0].note;
     nomMin = strdup(tab[0].nom);
@@ -96,15 +97,17 @@ float calcule_moyenne(NOTEINFO *tab, int n) {
     }
     return s / n;
 }
+
 char *noms_note_inferieure_5(NOTEINFO *tab, int n) {
 
     int i;
-    char *noms = malloc(80 * n);
+    char *noms;
 
+    noms = malloc(80 * n);
     noms[0] = '\0';
-    i=0;
+    i = 0;
 
-    while(i<n) {
+    while (i < n) {
         if (tab[i].note < 5.0) {
             strcat(noms, tab[i].nom);
             strcat(noms, " ");
@@ -117,8 +120,8 @@ char *noms_note_inferieure_5(NOTEINFO *tab, int n) {
 int main() {
 
     NOTEINFO t[N];
-    int choix,valid_input,drapeau;
-    float note,moyenne;
+    int choix, valid_input, drapeau;
+    float note, moyenne;
     char nom[80], nomsInf5[80];
 
 
@@ -152,7 +155,7 @@ int main() {
         if (choix == 1) {
             printf("\nDonnez le nom de l'etudiant dont vous voulez connaitre la note :");
             scanf("%s", nom);
-            drapeau = rend_note_en_fonction_du_nom(t, N, nom,&note);
+            drapeau = rend_note_en_fonction_du_nom(t, N, nom, &note);
             if (drapeau == 0) {
                 printf("\nLe nom saisi n'existe pas");
             } else {
@@ -168,11 +171,11 @@ int main() {
             printf("\nLa moyenne de la classe est : %.2f", moyenne);
         }
         if (choix == 4) {
-            strcpy(nomsInf5,noms_note_inferieure_5(t, N));
+            strcpy(nomsInf5, noms_note_inferieure_5(t, N));
             printf("\nVoici le ou les etudiants ayant une note inferieure a 5: %s", nomsInf5);
             free(nomsInf5);
         }
-    }while (choix != 5);
+    } while (choix != 5);
 
     printf("\nVous avez decide de sortir, fin du programme");
 
