@@ -17,6 +17,7 @@
 //- Enregistrer les informations des clients pour l’année dernière dans un autre tableau,
 //calculez les moyennes des factures pour les deux années, et indiquez quelle année a la
 //moyenne la plus élevée.
+//fini
 
 #include <stdio.h>
 #include <string.h>
