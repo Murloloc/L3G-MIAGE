@@ -8,6 +8,7 @@
 //- étant donné le nom d'une personne renvoie son sexe
 //- donne le nombre de personnes mariées qui habitent à Aix.
 //Ecrire un programme contenant un menu qui gère les appels aux différents sous programmes.
+//Fini
 
 #include <stdio.h>
 #include <string.h>
