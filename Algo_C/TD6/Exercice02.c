@@ -14,6 +14,7 @@
 //Vous définirez la structure de données qui vous semble adaptée, et le programme principal qui
 //demande à l’utilisateur le bénéfice réalisée cette année par l’entreprise et affiche la liste des
 //actionnaires classés
+//Fini
 
 #include <stdio.h>
 
