@@ -13,6 +13,7 @@
 //affichés dans le main. L’exception concerne essentiellement le sous-programme de remplissage
 //de tableau (qui contient des scanf) et le sous-programme d’affichage d’un tableau (qui contient
 //des printf).
+//Fini
 
 #include <stdio.h>
 #include <string.h>
