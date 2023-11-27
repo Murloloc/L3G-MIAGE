@@ -43,6 +43,8 @@
 //du logiciel, il n’y a aucun abonné et aucun livre. Un ensemble de données initiales (base
 //d’adhérents, base de livres) sera lu dans des fichiers.
 
+//Pas fini
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
