@@ -171,7 +171,7 @@ int main() {
                 printf("Cette valeur n'est pas dans le tableau re essayez");
             }
         }
-
+//menu pas fini
     } while (choix != 0);
 
     return 0;
