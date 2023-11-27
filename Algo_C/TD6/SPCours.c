@@ -19,6 +19,7 @@ int suppression_non_ordonne(int *tab, int *nbv, int e) {
     int i, flag;
 
     i = 0;
+    flag = 0;
     while (i < *nbv && flag == 0) {
         if (tab[i] == e) {
             flag = 1;
@@ -34,24 +35,11 @@ int suppression_non_ordonne(int *tab, int *nbv, int e) {
 }
 
 int plein(int nbv, int max) {
-    int flag;
-    if (nbv == max) {
-        flag = 1;
-    } else {
-        flag = 0;
-    }
-    return flag;
+    return nbv == max;
 }
 
 int vide(int nbv) {
-    int flag;
-
-    if (nbv == 0) {
-        flag = 1;
-    } else {
-        flag = 0;
-    }
-    return flag;
+    return nbv == 0;
 }
 
 //SP cas ordonné ordre croissant
@@ -84,6 +72,7 @@ void ajout_ordonne_croissant(int *tab, int *nbv, int e) {
 }
 
 int suppression_ordonne_croissant(int *tab, int *nbv, int e) {
+
     int i, flag, num_sup;
     i = 0;
     flag = 0;
@@ -124,7 +113,7 @@ int supp_file(int *tab, int *nbv) {
         tab[i] = tab[i + 1];
         i++;
     }
-    *nbv=*nbv-1;
+    *nbv = *nbv - 1;
 
     return val_sup;
 }
@@ -133,18 +122,18 @@ int supp_file(int *tab, int *nbv) {
 
 //Pile (ex pile d'assiette) FILO first in last out LIFO last in first out
 
-void empiler(int *tab, int *nbv, int e){
+void empiler(int *tab, int *nbv, int e) {
 
-    tab[*nbv]=e;
-    *nbv=*nbv+1;
+    tab[*nbv] = e;
+    *nbv = *nbv + 1;
     return;
 }
 
-int depiler(int *tab, int *nbv){
+int depiler(int *tab, int *nbv) {
 
     int val_sup;
-    val_sup=tab[*nbv-1];
-    *nbv=*nbv-1;
+    val_sup = tab[*nbv - 1];
+    *nbv = *nbv - 1;
     return val_sup;
 }
 
@@ -187,4 +176,3 @@ int main() {
 
     return 0;
 }
-
