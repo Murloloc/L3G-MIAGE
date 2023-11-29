@@ -34,6 +34,7 @@ int suppression_non_ordonne(int *tab, int *nbv, int e) {
     return flag;
 }
 
+
 int plein(int nbv, int max) {
     return nbv == max;
 }
@@ -138,6 +139,24 @@ int depiler(int *tab, int *nbv) {
 }
 
 //pareil pour vide et plein
+
+//tourniquet
+
+void affichage_tourniquet(int *tab, int nbv, int debut) {
+
+    int i, c;
+    i = debut;
+    c = 0;
+    while (c < nbv) {
+        printf("%d\n", tab[i]);
+        c++;
+        i++;
+        if (i == MAX) {
+            i = 0;
+        }
+    }
+
+}
 
 int main() {
 
