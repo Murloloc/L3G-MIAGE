@@ -100,28 +100,26 @@ float calcule_moyenne(ENREGISTREMENT *tab, int n) {
 
 float calcule_moyenne_foyer_moins_de_3(ENREGISTREMENT *tab, int n, float *moy) {
 
-    int i, cpt;
+    int i, cpt, flag;
     float s;
 
     i = 0;
     s = 0;
     cpt = 0;
-    while (i < N) {
+    while (i < n) {
         if (tab[i].nbFoyer < 3) {
+            flag = 1;
             s = s + tab[i].montFact;
             cpt++;
         }
         i++;
     }
-    if (cpt == 0) {
-        return 0;
-    } else {
-        *moy=s/cpt;
-        return 1;
-    }
+    *moy = s / cpt;
+    return flag;
 }
 
-int rend_min_au_moins_2(ENREGISTREMENT *tab, int n,float *min) {
+
+int rend_min_au_moins_2(ENREGISTREMENT *tab, int n, float *min) {
 
     int i, flag;
 
@@ -140,8 +138,8 @@ int rend_min_au_moins_2(ENREGISTREMENT *tab, int n,float *min) {
             if (tab[i].nbFoyer >= 2 && tab[i].montFact < *min) {
                 *min = tab[i].montFact;
             }
+            i++;
         }
-        i++;
     }
     return flag;
 }
@@ -149,9 +147,7 @@ int rend_min_au_moins_2(ENREGISTREMENT *tab, int n,float *min) {
 int main() {
 
     ENREGISTREMENT t[N], t2[N];
-    float moyenne, moyenneFactureFoyerMoinsDe3,moyenneMoins3,minimum;
-    int drapeau;
-
+    float moyenne, moyenneMoins3, minimum;
 
     rempli_enregistrement(t, N);
     affiche_enregistrement(t, N);
@@ -160,18 +156,18 @@ int main() {
 
     affiche_montant_bouches_du_rhone(t, N);
 
-    moyenneFactureFoyerMoinsDe3 = calcule_moyenne_foyer_moins_de_3(t, N,&moyenneMoins3);
-    if (moyenneFactureFoyerMoinsDe3==0){
-        printf("Il n'y a aucun foyer de moins de 3 personnes");
+
+    if (calcule_moyenne_foyer_moins_de_3(t, N, &moyenneMoins3)) {
+        printf("\nLa moyenne des factures des foyers de moins de 3 personnes est : %.2f\n", moyenneMoins3);
     } else {
-        printf("\nLa moyenne des factures des foyers de moins de 3 personnes est : %.2f\n",moyenneMoins3);
+        printf("Il n'y a aucun foyer de moins de 3 personnes");
     }
 
-    drapeau=rend_min_au_moins_2(t, N,&minimum);
-    if(drapeau==0){
+    if (rend_min_au_moins_2(t, N, &minimum)) {
+        printf("La facture minimale est %.2f", minimum);
+    } else {
         printf("Il n'y a pas de foyer en dessous de 2 habitants\n");
-    }else{
-        printf("La facture minimale est %.2f",minimum);
+
     }
 
     printf("\n Veuillez maintenant remplir les informations pour l'annee precedente \n");

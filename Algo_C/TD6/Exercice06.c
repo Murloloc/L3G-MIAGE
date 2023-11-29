@@ -32,3 +32,113 @@
 //l’affichage des résultats si nécessaire.
 
 //Pas commencer
+
+
+#include <stdio.h>
+#include <string.h>
+#define MAX 5
+
+typedef char STRING[80];
+
+void ajout_non_ordonne(int *tab, int *nbv, int e){
+
+    tab[*nbv]=e;
+    *nbv=*nbv+1;
+    return;
+}
+
+int suppression_non_ordonne(int *tab, int *nbv, int e) {
+
+    int i, flag;
+
+    i = 0;
+    flag = 0;
+
+    while (i < *nbv && flag == 0) {
+        if (tab[i] == e) {
+            flag = 1;
+        } else {
+            i++;
+        }
+    }
+
+    if (flag) {
+        tab[i] = tab[*nbv - 1];
+        *nbv = *nbv - 1;
+    }
+    return flag;
+}
+
+int plein(int nbv, int max){
+    return nbv==max;
+}
+
+int vide(int nbv){
+    return nbv==0;
+}
+
+void affiche(int *tab, int nbv){
+
+    int i;
+    i=0;
+
+    while (i<nbv){
+        printf("%d\n",tab[i]);
+        i++;
+    }
+}
+
+int main(){
+
+    int choix,nbval,val,t[MAX];
+
+    nbval=0;
+
+    do {
+        printf("\n1 : ajout\n");
+        printf("2 : suppression\n");
+        printf("3 : affichage\n");
+        printf("4 : FIN\n");
+        printf("\nQuel est votre choix ? : ");
+        scanf("%d", &choix);
+        while (choix<1 || choix >4){
+            printf("\nSaisie incorecte reassayez : ");
+            scanf("%d",&choix);
+        }
+        printf("\n");
+
+        if (choix == 1) {
+            if (plein(nbval, MAX)) {
+                printf("Le tableau est plein\n");
+            } else {
+                printf("\nQuelle valeur voulez vous ajouter ? : ");
+                scanf("%d", &val);
+                ajout_non_ordonne(t, &nbval, val);
+            }
+        }
+        if (choix == 2) {
+            if (vide(nbval)) {
+                printf("Le tableau est vide\n");
+            } else {
+                printf("Quelle valeur voulez vous supprimer ? : ");
+                scanf("%d", &val);
+                if (suppression_non_ordonne(t, &nbval, val)) {
+                    printf("\n%d a ete supprime\n",val);
+                } else {
+                    printf("\n%d n est pas dans le tableau\n",val);
+                }
+            }
+        }
+        if(choix==3){
+            if(vide(nbval)){
+                printf("\nLe tableau est vide\n");
+            } else{
+                affiche(t,nbval);
+            }
+        }
+    } while (choix!=4);
+
+    printf("FIN du programme");
+
+    return 0;
+}
