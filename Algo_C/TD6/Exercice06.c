@@ -88,7 +88,26 @@ void affiche(int *tab, int nbv){
     }
 }
 
-int main(){
+void tri_a_bulle(int *tab, int n) {
+
+    int i, flag, ech;
+
+    flag = 1;
+    while (flag == 1) {
+        flag = 0;
+        i = 0;
+        while (i < n - 1) {
+            if (tab[i] < tab[i + 1]) {
+                ech = tab[i];
+                tab[i] = tab[i + 1];
+                tab[i + 1] = ech;
+                flag = 1;
+            }
+            i++;
+        }
+    }
+}
+ int main(){
 
     int choix,nbval,val,t[MAX];
 

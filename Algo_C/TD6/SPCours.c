@@ -34,7 +34,6 @@ int suppression_non_ordonne(int *tab, int *nbv, int e) {
     return flag;
 }
 
-
 int plein(int nbv, int max) {
     return nbv == max;
 }

@@ -16,3 +16,163 @@
 //dessins. Si vous utilisez des structures de données abstraites connues, citez-les.
 //3°) Ecrivez le programme complet comportant deux choix principaux : « un nouveau
 //document arrive » et « l’imprimante est libre ».
+
+#include<stdio.h>
+#include<string.h>
+#define MAX 10
+
+typedef char STRING[80];
+
+typedef struct {
+    STRING nom_fichier;
+    int nb_page;
+} TRAVAUX;
+
+int plein(int nbv, int max) {
+    return nbv == max;
+}
+
+int vide(int nbv, int max) {
+    return nbv == 0;
+}
+
+void ajout_file(TRAVAUX *tab, int *nbv, TRAVAUX e) {
+
+    tab[*nbv] = e;
+    *nbv = *nbv + 1;
+    return;
+}
+
+void ajout_ordonne_croissant(TRAVAUX *tab, int *nbv, TRAVAUX e) {
+
+    int i, flag, num_ajout;
+
+    i = 0;
+    flag = 0;
+
+    while (i < *nbv && flag == 0) {
+        if (tab[i].nb_page > e.nb_page) {
+            flag = 1;
+        } else {
+            i++;
+        }
+    }
+    num_ajout = i;
+    i = *nbv;
+
+    while (i > num_ajout) {
+        tab[i] = tab[i - 1];
+        i--;
+    }
+    tab[num_ajout] = e;
+    *nbv = *nbv + 1;
+
+    return;
+}
+
+void supp_file(TRAVAUX *tab, int *nbv, TRAVAUX *val_supp) {
+
+    int i;
+
+    *val_supp = tab[0];
+    i = 0;
+    while (i < *nbv - 1) {
+        tab[i] = tab[i + 1];
+        i = i + 1;
+    }
+    *nbv = *nbv - 1;
+    return;
+}
+
+int main() {
+
+    TRAVAUX tcourt[MAX],tlong[MAX];
+
+
+    nom, valeur_supp;
+    int nb_page, nbval, valid_input, choix, i, prio, nonprio;
+
+    prio = 0;
+    nonprio = 0;
+
+    do {
+        printf("\n");
+        printf("1: un nouveau document arrive \n");
+        printf("2: l'impression est libre\n");
+        printf("3: voir la file d'attente \n");
+        printf("4: FIN \n");
+
+        valid_input = 0;
+        while (valid_input == 0) {
+
+            printf("\n\nQue voulez-vous faire : ");
+
+            if (scanf("%d", &choix) != 1 || choix < 1 || choix > 4) {
+                // La saisie n'est pas un entier entre 1 et 5
+                printf("\nSaisie incorrecte. Veuillez entrer un nombre entier entre 1 et 4.\n");
+                // Nettoie le tampon d'entrée
+                while (getchar() != '\n');
+            } else {
+                valid_input = 1;
+            }
+        }
+        if (choix == 1) {
+            if (plein(prio + nonprio, MAX)) {
+                printf("Il n'y a plus de place dans la file d'attente\n ");
+            } else {
+                printf("Tapez votre nom\n");
+                scanf("%s", nom);
+                printf("combien de page ? ");
+                scanf("%d", &nb_page);
+                if (statut == 1) {
+                    ajout_file(tprio, &prio, nom);
+                } else {
+                    ajout_file(tnonprio, &nonprio, nom);
+                }
+            }
+        }
+
+        if (choix == 2) {
+            if (vide(prio + nonprio, MAX)) {
+                printf("La file est vide\n");
+            } else if (prio != 0) {
+                supp_file(tprio, &prio, &valeur_supp);
+            } else {
+                supp_file(tnonprio, &nonprio, &valeur_supp);
+            }
+            printf("%s vous pouvez venir", valeur_supp);
+        }
+        if (choix == 3) {
+            if (vide(prio + nonprio, MAX)) {
+                printf("La file est vide");
+            }
+            printf("Voici la file d'attente des prioritaires\n");
+            affiche_tab(tprio, prio);
+            printf("Voici la file d'attente des non prioritaires\n");
+            affiche_tab(tnonprio, nonprio);
+        }
+
+    } while (choix != 4);
+
+    if (vide(prio + nonprio, MAX)) {
+        printf("la file est vide");
+    } else {
+        i = 0;
+        while (i < prio + 1) {
+            supp_file(tprio, &prio, &valeur_supp);
+            printf("%s il faut sortir\n", valeur_supp);
+            i = i + 1;
+        }
+        i = 0;
+        while (i < nonprio + 1) {
+            supp_file(tnonprio, &nonprio, &valeur_supp);
+            printf("%s il faut sortir\n", valeur_supp);
+
+            i = i + 1;
+        }
+    }
+
+    return 0;
+
+}
+

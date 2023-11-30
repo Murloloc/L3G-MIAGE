@@ -68,7 +68,7 @@ typedef struct {
     int code_abo;
 } LIVRE;
 
-void remplit_tab_abo(ABONNE *tab, int *nbv) {
+void ajout_abo(ABONNE *tab, int *nbv) {
 
     int i;
 
@@ -91,6 +91,8 @@ void remplit_tab_abo(ABONNE *tab, int *nbv) {
 
     return;
 }
+
+
 
 void affichage_abo(ABONNE *tab, int nbv) {
 
@@ -229,7 +231,7 @@ int main() {
                     if (plein(nb_abo, MAXABO)) {
                         printf("\nNombre maximum d'abonne atteint veuillez en supprimer avant d'en rajouter de nouveau\n");
                     } else {
-                        remplit_tab_abo(t1, &nb_abo);
+                        ajout_abo(t1, &nb_abo);
                     }
                 }
                 if (choix == 2){
