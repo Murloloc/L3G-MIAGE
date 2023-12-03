@@ -19,6 +19,7 @@
 
 #include<stdio.h>
 #include<string.h>
+
 #define MAX 10
 
 typedef char STRING[80];
@@ -32,7 +33,7 @@ int plein(int nbv, int max) {
     return nbv == max;
 }
 
-int vide(int nbv, int max) {
+int vide(int nbv) {
     return nbv == 0;
 }
 
@@ -84,13 +85,24 @@ void supp_file(TRAVAUX *tab, int *nbv, TRAVAUX *val_supp) {
     return;
 }
 
+void affiche_tab(TRAVAUX *tab, int nbv) {
+
+    int i;
+    i = 0;
+
+    while (i < nbv) {
+        printf("\nNom : %10s ", tab[i].nom_fichier);
+        printf(" Nombre page : %3d", tab[i].nb_page);
+        i++;
+    }
+    return;
+}
+
 int main() {
 
-    TRAVAUX tcourt[MAX],tlong[MAX];
+    TRAVAUX tcourt[MAX], tlong[MAX], t[2];
 
-
-    nom, valeur_supp;
-    int nb_page, nbval, valid_input, choix, i, prio, nonprio;
+    int nb_page, valid_input, choix, i, prio, nonprio, valeur_supp;
 
     prio = 0;
     nonprio = 0;
@@ -120,58 +132,57 @@ int main() {
             if (plein(prio + nonprio, MAX)) {
                 printf("Il n'y a plus de place dans la file d'attente\n ");
             } else {
-                printf("Tapez votre nom\n");
-                scanf("%s", nom);
-                printf("combien de page ? ");
-                scanf("%d", &nb_page);
-                if (statut == 1) {
-                    ajout_file(tprio, &prio, nom);
+                printf("\nTapez le nom : ");
+                scanf("%s", t[0].nom_fichier);
+                printf("\nCombien de page : ");
+                scanf("%d", &t[0].nb_page);
+                if (t[0].nb_page < 10) {
+                    ajout_ordonne_croissant(tcourt, &prio, t[0]);
                 } else {
-                    ajout_file(tnonprio, &nonprio, nom);
+                    ajout_file(tlong, &nonprio, t[0]);
                 }
             }
         }
-
         if (choix == 2) {
-            if (vide(prio + nonprio, MAX)) {
-                printf("La file est vide\n");
+            if (vide(prio + nonprio)) {
+                printf("\nLa file est vide\n");
             } else if (prio != 0) {
-                supp_file(tprio, &prio, &valeur_supp);
+                supp_file(tcourt, &prio, &t[1]);
+                printf("\n%s a ete imprime", t[1].nom_fichier);
             } else {
-                supp_file(tnonprio, &nonprio, &valeur_supp);
+                supp_file(tlong, &nonprio, &t[1]);
+                printf("\n%s a ete imprime", t[1].nom_fichier);
             }
-            printf("%s vous pouvez venir", valeur_supp);
         }
         if (choix == 3) {
-            if (vide(prio + nonprio, MAX)) {
-                printf("La file est vide");
+            if (vide(prio + nonprio)) {
+                printf("\nLa file est vide");
+            } else {
+                printf("\nVoici la file d'attente des prioritaires\n");
+                affiche_tab(tcourt, prio);
+                printf("\nVoici la file d'attente des non prioritaires\n");
+                affiche_tab(tlong, nonprio);
             }
-            printf("Voici la file d'attente des prioritaires\n");
-            affiche_tab(tprio, prio);
-            printf("Voici la file d'attente des non prioritaires\n");
-            affiche_tab(tnonprio, nonprio);
         }
 
     } while (choix != 4);
 
-    if (vide(prio + nonprio, MAX)) {
-        printf("la file est vide");
+    if (vide(prio + nonprio)) {
+        printf("\nla file est vide");
     } else {
         i = 0;
         while (i < prio + 1) {
-            supp_file(tprio, &prio, &valeur_supp);
-            printf("%s il faut sortir\n", valeur_supp);
-            i = i + 1;
+            supp_file(tcourt, &prio, &t[1]);
+            printf("\n%s est sortie\n", t[1].nom_fichier);
+            i++;
         }
         i = 0;
         while (i < nonprio + 1) {
-            supp_file(tnonprio, &nonprio, &valeur_supp);
-            printf("%s il faut sortir\n", valeur_supp);
-
-            i = i + 1;
+            supp_file(tlong, &nonprio, &t[1]);
+            printf("\n%s est sortie\n", t[1].nom_fichier);
+            i++;
         }
     }
-
     return 0;
 
 }
