@@ -102,7 +102,7 @@ int main() {
 
     TRAVAUX tcourt[MAX], tlong[MAX], t[2];
 
-    int nb_page, valid_input, choix, i, prio, nonprio, valeur_supp;
+    int valid_input, choix, i, prio, nonprio;
 
     prio = 0;
     nonprio = 0;
@@ -184,6 +184,5 @@ int main() {
         }
     }
     return 0;
-
 }
 
