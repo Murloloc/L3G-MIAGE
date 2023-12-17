@@ -73,7 +73,7 @@ void ajout_ordonne_croissant(int *tab, int *nbv, int e) {
 
 int suppression_ordonne_croissant(int *tab, int *nbv, int e) {
 
-    int i, flag, num_sup;
+    int i, flag;
     i = 0;
     flag = 0;
     while (i < *nbv && flag == 0) {
@@ -83,14 +83,13 @@ int suppression_ordonne_croissant(int *tab, int *nbv, int e) {
             i++;
         }
     }
-    num_sup = i;
     if (flag == 1) {
         while (i < *nbv - 1) {
             tab[i] = tab[i + 1];
+            i++;
         }
         *nbv = *nbv - 1;
     }
-
     return flag;
 }
 
@@ -157,6 +156,18 @@ void affichage_tourniquet(int *tab, int nbv, int debut) {
 
 }
 
+void affiche(int *tab, int nbv) {
+
+    int i;
+    i = 0;
+
+    while (i < nbv) {
+        printf("\n%d \n", tab[i]);
+        i++;
+    }
+    return;
+}
+
 int main() {
 
     int t[MAX], nb_val, choix, elt, res, val_sup;
@@ -164,7 +175,7 @@ int main() {
     nb_val = 0;
 
     do {
-        printf("1 ajout\n");
+        printf("\n1 ajout\n");
         printf("2 suppression\n");
         printf("3 affichage\n");
         printf("0 fin\n");
@@ -178,16 +189,19 @@ int main() {
             } else {
                 printf("Quelle valeur ?\n");
                 scanf("%d", &elt);
-                ajout_non_ordonne(t, &nb_val, elt);
+                ajout_ordonne_croissant(t, &nb_val, elt);
             }
         }
         if (choix == 2) {
             printf("Quelle valeur voulez vous supp : ");
-            scanf("%d", val_sup);
-            res = suppression_non_ordonne(t, &nb_val, val_sup);
+            scanf("%d", &val_sup);
+            res = suppression_ordonne_croissant(t, &nb_val, val_sup);
             if (res == 0) {
                 printf("Cette valeur n'est pas dans le tableau re essayez");
             }
+        }
+        if (choix==3){
+            affiche(t,nb_val);
         }
 //menu pas fini
     } while (choix != 0);
