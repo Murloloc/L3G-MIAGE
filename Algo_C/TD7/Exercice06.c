@@ -110,7 +110,7 @@ int main() {
     initialisation(t, nb_guichet);
 
     do {
-printf("\n");
+        printf("\n");
         printf("1: Une voiture quitte le guichet \n");
         printf("2: Une voiture arrive au peage\n");
         printf("3: FIN \n");
@@ -138,8 +138,8 @@ printf("\n");
             ajout(t, rend_rang_min(t, nb_guichet));
 
         }
-        }
-    } while (choix != 3);
+
+    }while (choix != 3);
 
 
     return 0;

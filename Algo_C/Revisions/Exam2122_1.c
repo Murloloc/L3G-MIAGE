@@ -45,29 +45,29 @@ ETU rend_etu(ETU *tab, int ne, int num_mat) {
 
 }
 
-float rend_moyenne_mat(ETU *tab,int ne, int num){
+float rend_moyenne_mat(ETU *tab, int ne, int num) {
 
     int i;
     float s;
-    i=0;
-    s=0;
-    while (i<ne){
-        s=s+tab[i].notes[num];
+    i = 0;
+    s = 0;
+    while (i < ne) {
+        s = s + tab[i].notes[num];
         i++;
     }
-    return s/ne;
+    return s / ne;
 }
 
-int rend_mat_meilleure(ETU *tab, int nbn,int ne){
-    int i,rang;
+int rend_mat_meilleure(ETU *tab, int nbn, int ne) {
+    int i, rang;
     float max;
 
-    max= rend_moyenne_mat(tab,ne,0);
-    i=1;
-    while (i<nbn){
-        if(max< rend_moyenne_mat(tab,ne,i)){
-           max= rend_moyenne_mat(tab,ne,i);
-           rang=i;
+    max = rend_moyenne_mat(tab, ne, 0);
+    i = 1;
+    while (i < nbn) {
+        if (max < rend_moyenne_mat(tab, ne, i)) {
+            max = rend_moyenne_mat(tab, ne, i);
+            rang = i;
         }
         i++;
     }
@@ -89,7 +89,7 @@ void insere(int *tab, int *BS, int e) {
         }
     }
     num_ajout = i;
-    i = *BS+1;
+    i = *BS + 1;
 
     while (i > num_ajout) {
         tab[i] = tab[i - 1];
@@ -100,13 +100,13 @@ void insere(int *tab, int *BS, int e) {
     return;
 }
 
-void tri_par_insertion(int *tab, int nbv){
+void tri_par_insertion(int *tab, int nbv) {
 
     int BS;
 
-    BS=0;
-    while (BS<nbv){
-        insere(tab,&BS,tab[BS+1]);
+    BS = 0;
+    while (BS < nbv) {
+        insere(tab, &BS, tab[BS + 1]);
     }
     return;
 }
