@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TD Ex3</title>
+</head>
+<body>
+    <form name="formulaire" action="traitForm.php" method="post">
+        <label>Vos coordonnées</label><br>
+        <label> nom </label>
+        <input type="text" name="nom" size="10" value=""><br>
+        <label> prénom </label>
+        <input type="text" name="prenom" size="10" value=""><br>
+        <label> e-mail </label>
+        <input type="text" name="e-mail" size="10" value=""><br>
+        <label> établissement </label>
+        <input type="text" name="etablissement" size="10" value=""><br>
+        <label> ville </label>
+        <input type="text" name="ville" size="10" value=""><br>
+        <label>département</label>
+            <select name="listeDep">
+                <option value="Seine-Saint-Denis" >Seine-Saint-Denis</option>
+                <option value="Val de Marne" >Val de Marne</option>
+                <option value="Seine et Marne" >Seine et Marne</option>
+            </select>
+        <br>
+        <label>Votre type d'emploi</label><br>
+        <input type="radio" checked name="profession" value="Enseignement">enseignement
+        <input type="radio" name="profession" value="Education">éducation
+        <input type="radio" name="profession" value="Administration">administration
+        <br><label>Vos loisirs préférés</label><br>
+        <input type="checkbox" name="choix[]" value="Son-vidéo">Son-vidéo
+        <input type="checkbox" name="choix[]" value="Télévision">Télévision
+        <input type="checkbox" name="choix[]" value="Cinéma">Cinéma
+        <br>
+        <input type="checkbox" name="choix[]" value="Programmation">Programmation
+        <input type="checkbox" name="choix[]" value="Sports">Sports
+        <input type="checkbox" name="choix[]" value="Internet">Internet
+        <br><label>Décrivez votre projet site WEB</label><br>
+        <textarea id="zoneTexte" name="zoneTexte" rows="4" cols="50"></textarea>
+        <br>
+        <button type="submit">Enregistrer </button>
+        <button type="reset"> Annuler</button>
+    </form>
+
+</body>
+</html>

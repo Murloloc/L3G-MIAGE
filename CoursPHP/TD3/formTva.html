@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire</title>
+</head>
+<body>
+
+<form name= "formTva" action="traitMontant.php" method="post">
+    <fieldset>
+        <label> Prix unitaire hors taxe</label>
+        <input type="number" name="pu" id="pu" value=0><br>
+        <label> Quantité </label>
+        <input type="number" name="qte" id="qte" value=0><br>
+        <label >Taux de TVA choisi</label><br>
+        <input type="radio" name="tauxTva" value="1">5.5% <br>
+        <input type="radio" name="tauxTva" value="2">10% <br>
+        <input checked type="radio" name="tauxTva" value="3">20% <br>
+    </fieldset>
+    <button type="submit">Calculer </button>
+    <button type="reset"> Annuler</button>
+</form>
+
+</body>
+</html>
