@@ -13,7 +13,7 @@ public class ElementDePileEvoluee {
         this(null);
     }
 
-    public ElementDePileEvoluee creerPileVide() {
+    public static ElementDePileEvoluee creerPileVide() {
         return (new ElementDePileEvoluee(null));
     }
 
@@ -42,11 +42,10 @@ public class ElementDePileEvoluee {
             return 0;
         }
     }
-    public void afficherElementDePileEvoluee(){
+    public void afficherElementDePileEvoluee() {
         System.out.println(this.donnee);
-        if (this.donnee!=null){
-
+        if (this.donnee != null) {
+            dessous.afficherElementDePileEvoluee();
         }
     }
-
 }
