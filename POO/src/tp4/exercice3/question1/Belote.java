@@ -149,10 +149,11 @@ public class Belote {
             carte = tasInter.getCarte();
             tasInter = tasInter.depiler();
             plisJoueurs[joueurAleat] = plisJoueurs[joueurAleat].empiler(carte);
+        }
+        for (int i=0; i<4;i++){
             System.out.println("-----------");
             System.out.println("Pli du joueur " + (i + 1) + " :");
             plisJoueurs[i].afficherElementDeTas();
-
         }
     }
 
