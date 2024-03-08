@@ -9,10 +9,10 @@ public class MainElementDeFileEvoluee {
         //Affichage de chacune des files (normalement vides).
         System.out.println("Affichage des files après initialisation :");
         System.out.println("------------------------------------------");
-        System.out.println("Contenu de la fileA : actuellement " + fileA.compterNbElementsDeFile() + " elements.");
-        fileA.afficherElementDeFile();
-        System.out.println("Contenu de la fileB : actuellement " + fileB.compterNbElementsDeFile() + " elements.");
-        fileB.afficherElementDeFile();
+        System.out.println("Contenu de la fileA : actuellement " + fileA.compterNbElementsDeFileEvoluee() + " elements.");
+        fileA.afficherElementDeFileEvoluee();
+        System.out.println("Contenu de la fileB : actuellement " + fileB.compterNbElementsDeFileEvoluee() + " elements.");
+        fileB.afficherElementDeFileEvoluee();
 
         //Ajout de nouvelles valeurs en queue des files
         for(int cpt = 1; cpt < 10; cpt++)
@@ -25,13 +25,13 @@ public class MainElementDeFileEvoluee {
         System.out.println("---------------------------------------------");
         System.out.println("Affichage des files après ajouts d'elements :");
         System.out.println("---------------------------------------------");
-        System.out.println("Contenu de la fileA : actuellement " + fileA.compterNbElementsDeFile() + " elements.");
-        fileA.afficherElementDeFile();
-        System.out.println("Contenu de la fileB : actuellement " + fileB.compterNbElementsDeFile() + " elements.");
-        fileB.afficherElementDeFile();
+        System.out.println("Contenu de la fileA : actuellement " + fileA.compterNbElementsDeFileEvoluee() + " elements.");
+        fileA.afficherElementDeFileEvoluee();
+        System.out.println("Contenu de la fileB : actuellement " + fileB.compterNbElementsDeFileEvoluee() + " elements.");
+        fileB.afficherElementDeFileEvoluee();
 
         //Suppression d'elements depuis la tête
-        while ((fileA.compterNbElementsDeFile() >= 2) && (fileB.compterNbElementsDeFile() >= 1))
+        while ((fileA.compterNbElementsDeFileEvoluee() >= 2) && (fileB.compterNbElementsDeFileEvoluee() >= 1))
         {
             System.out.println("Valeur ôtee en tête de fileA : " + fileA.getDonnee());
             fileA = fileA.retirerTete();
@@ -43,10 +43,10 @@ public class MainElementDeFileEvoluee {
         System.out.println("----------------------------------------");
         System.out.println("Affichage des files après suppressions :");
         System.out.println("----------------------------------------");
-        System.out.println("Contenu de la fileA : actuellement " + fileA.compterNbElementsDeFile() + " elements.");
-        fileA.afficherElementDeFile();
-        System.out.println("Contenu de la fileB : actuellement " + fileB.compterNbElementsDeFile() + " elements.");
-        fileB.afficherElementDeFile();
+        System.out.println("Contenu de la fileA : actuellement " + fileA.compterNbElementsDeFileEvoluee() + " elements.");
+        fileA.afficherElementDeFileEvoluee();
+        System.out.println("Contenu de la fileB : actuellement " + fileB.compterNbElementsDeFileEvoluee() + " elements.");
+        fileB.afficherElementDeFileEvoluee();
     }
 }
 
