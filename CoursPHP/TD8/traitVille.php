@@ -7,11 +7,12 @@ include "connectBdd.php";
 <div class="container" style="margin-top:30px">
   <div class="row">
     <div class="col-sm-4">
-    <p> HTML CSS Bootstrap PHP et PDO...</p>
+       <img  src="images/logo.webp" width=80 height= 80 >
     </div>
     <div class="col-sm-8">
+        <h3>Contacts de la ville</h3>
             <table border="1" >
-            <caption>Contacts de la ville</caption>
+
             <thead> <!-- En-tête du tableau -->
             <tr> <!—une ligne -->
                 <th>Nom</th>
@@ -44,7 +45,8 @@ include "connectBdd.php";
             </tbody>
             </table>
         </div>
-    </div> 
+    </div>
+ </div> 
 </section>
 <?php include 'pieddepage.html';?>
 </body>

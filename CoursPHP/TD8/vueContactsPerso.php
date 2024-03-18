@@ -6,7 +6,7 @@ include "connectBdd.php";
 <div class="container">
    <div class="row">
     <div class="col-sm-4">
-    <p> HTML CSS Bootstrap PHP et PDO...</p>
+       <img  src="images/logo.webp" width=80 height= 80 >
     </div>
     <div class="col-sm-8">
                <?php

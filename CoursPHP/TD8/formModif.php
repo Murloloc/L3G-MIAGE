@@ -7,26 +7,30 @@ include "connectBdd.php";
         <div class="container" style="margin-top:30px">
           <div class="row">
             <div class="col-sm-4">
-			  <img  src="images/logo.webp" width=80 height= 80 > 
+			<img  src="images/logo.webp" width=80 height= 80 >
             </div>      
             <div class="col-sm-8">
-			<form action="traitVille.php" method="POST">
-			<h3> Choisissez une ville : </h3>
-				<select name="listeVille"> 
+			<form action="traitModif.php" method="POST">
+			<h3> Modification d'un contact</h3>
+				<select name="listeContacts"> 
 				<?php		
-				$sql="SELECT distinct ville FROM entreprise";// on écrit la requête sous forme de chaine de caractères
+				$sql="SELECT id,nom FROM contact";
 				try{
-					$resultat = $cnx->query($sql); //// on exécute la requête qui renvoie un curseur (pointeur sur le jeu d'enregistrements)
-					$tabloResultat=$resultat->fetchAll(PDO::FETCH_ASSOC);// on lit le contenu du curseur $résultat récupéré dans un tableau associatif 
+					$resultat = $cnx->query($sql); 
+					$tabloResultat=$resultat->fetchAll(PDO::FETCH_ASSOC);
 						foreach($tabloResultat as $ligne)   {
-						echo "<option value='".$ligne["ville"]."'>".$ligne["ville"]."</option>";
+						echo "<option value='".$ligne["id"]."'>".$ligne["nom"]."</option>";
+						// Attention, on affiche le nom mais le value est l'id
 					}
+					echo "</select>";
 				}
 				catch(PDOException $e) {   // gestion des erreurs
 						echo"ERREUR PDO  " . $e->getMessage();
 				}
-			?>	 		
-				</select>
+				?>
+			<p><label for="EmailDemo">Nouvelle adresse mail :</label>
+			<input type="email" class="form-control" name="nouvelemail" aria-describedby="emailHelp" placeholder="Entrer le nouvel email">
+			</p>
 				<p>
 				<button type="submit" >Valider</button> 
 				<button type="reset" >Effacer</button>
